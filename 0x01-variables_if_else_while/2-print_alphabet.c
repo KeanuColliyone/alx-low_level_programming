@@ -8,8 +8,8 @@
  */
 int main(void)
 {
-int = n;
-char = l;
+int n;
+char l;
 srand(time(0));
 n = rand() % 26;
 l = 'a' + n;
