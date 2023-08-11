@@ -3,10 +3,9 @@
 #include <time.h>
 int main(void)
 {
-int min=-100;
-int max=100;
-int n = min + rand() % (max - min + 1);
+int n;
 srand(time(NULL));
+n=rand() - RAND_MAX/2;
 if(n > 0)
 {printf("%d is positive\n", n);
 }else if (n < 0)
