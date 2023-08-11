@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 /**
  * main - Prints the alphabet.
  *
@@ -8,12 +6,12 @@
  */
 int main(void)
 {
-int n;
-char l;
-srand(time(0));
-n = rand() % 26;
-l = 'a' + n;
-putchar(l);
+char alp[26] = "abcdefghijklmnopqrstuvwxyz";
+int i;
+for (i = 0; i < 26; i++)
+{
+putchar(alp[i]);
+}
 putchar('\n');
 return (0);
 }
