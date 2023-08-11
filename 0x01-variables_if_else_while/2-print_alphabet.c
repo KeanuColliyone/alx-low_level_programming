@@ -12,7 +12,7 @@ int = n;
 char = l;
 srand(time(0));
 n = rand() % 26;
-l = (char)('a' + n);
+l = 'a' + n;
 putchar(l);
 putchar('\n');
 return (0);
