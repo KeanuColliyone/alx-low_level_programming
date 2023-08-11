@@ -11,8 +11,10 @@ int main(void)
 srand(time(0));
 int n = rand() % 26;
 char l = 'a' + n;
+
 putchar(l);
-putchar('\n')
+putchar('\n');
+
 return (0);
 }
 
