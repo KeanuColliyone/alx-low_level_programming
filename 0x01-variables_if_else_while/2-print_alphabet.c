@@ -8,13 +8,13 @@
  */
 int main(void)
 {
+int = n;
+char = l;
 srand(time(0));
-int n = rand() % 26;
-char l = 'a' + n;
-
+n = rand() % 26;
+l = 'a' + n;
 putchar(l);
 putchar('\n');
-
 return (0);
 }
 
