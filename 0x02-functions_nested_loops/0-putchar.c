@@ -6,12 +6,14 @@
 int main(void)
 {
 	char i[] = "_putchar";
-	for(int j = 0; i[j] != NULL; j++)
+	int j = 0;
+	while (i[j] != '\0')
 	{
 		putchar(i[j]);
-		if (i == 7)
+		j++;
+		if (j == 8)
 		{
-			putchar("\n");
+			putchar('\n');
 		}
 	}
 	return (0);
