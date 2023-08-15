@@ -10,11 +10,11 @@ int main(void)
 
         while (i[j] != '\0')
         {
-                putchar(i[j]);
+                _putchar(i[j]);
                 j++;
                 if (j == 26)
                 {
-                        putchar('\n');
+                        _putchar('\n');
                 }
         }
         return (0);
