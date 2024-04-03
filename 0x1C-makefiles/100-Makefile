@@ -1,27 +1,31 @@
-CC = gcc
-SRC = $(wildcard *.c)
-OBJ = $(SRC:.c=.o)
-NAME = school
-CFLAGS = -Wall -Werror -Wextra -pedantic
+# Variable Definitions
+CC := gcc
+SRC := $(wildcard *.c)
+OBJ := $(SRC:.c=.o)
+NAME := school
+CFLAGS := -Wall -Werror -Wextra -pedantic
+RM := rm -f
 
-.PHONY: all clean fclean oclean re
+COMPILE.c = $(CC) $(CFLAGS) -c
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+	$(CC) $^ -o $@
 
-%.o: %.c m.h
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ): %.o: %.c
+	@$(COMPILE.c) $< -o $@ 
 
 clean:
-	$(RM) *~ $(NAME)
+	@$(RM) *~ $(NAME) && touch clean
 
 oclean:
-	$(RM) $(OBJ)
+	@$(RM) $(OBJ) && touch oclean
 
-fclean: clean oclean
-	$(RM) $(NAME)
+fclean: clean
+	@$(RM) $(OBJ) && touch fclean
 
 re: fclean all
 
+# Phony Targets
+.PHONY: all clean fclean oclean re
