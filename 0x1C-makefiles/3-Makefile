@@ -1,14 +1,11 @@
 CC := gcc
 RM := rm -f
 NAME := school
-SRC := $(wildcard *.c)
+SRC := main.c school.c
 OBJ := $(SRC:.c=.o)
 
 all: $(OBJ)
 	@$(CC) $(OBJ) -o $(NAME)
-
-%.o: %.c
-	@$(CC) -c $< -o $@
 
 clean:
 	@$(RM) *~ $(NAME)

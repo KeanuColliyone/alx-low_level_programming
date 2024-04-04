@@ -6,6 +6,7 @@ list of lists of integers where 0 represents a water zone and 1 represents
 a land zone. Cells are connected horizontally/vertically but not diagonally.
 """
 
+
 def island_perimeter(grid):
     """
     Calculates the perimeter of the island in the grid.
@@ -30,6 +31,7 @@ def island_perimeter(grid):
                     perimeter += 1
     return perimeter
 
+
 if __name__ == "__main__":
     grid = [
         [0, 0, 0, 0, 0, 0],
@@ -39,4 +41,3 @@ if __name__ == "__main__":
         [0, 0, 0, 0, 0, 0]
     ]
     print(island_perimeter(grid))
-
