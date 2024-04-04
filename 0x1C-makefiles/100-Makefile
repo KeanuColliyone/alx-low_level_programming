@@ -1,26 +1,25 @@
-CC := gcc -Wall -Werror -Wextra -pedantic
-RM := rm -f
-SRC := $(wildcard *.c)
+# Define variables
 NAME := school
-HEADER := m.h
+SRC := $(wildcard *.c)
+DEP := $(wildcard *.h)
+OBJ := $(SRC:.c=.o)
+CC := gcc
+CFLAGS := -Wall -Werror -Wextra -pedantic
 
-.PHONY: all clean fclean oclean re check-header
+.PHONY: all clean fclean oclean re
 
-all: check-header $(NAME)
+all: $(NAME)
 
-$(NAME): $(SRC)
-	@$(CC) -c $^
-	@$(CC) -o $@ $(^:.c=.o)
-
-check-header:
-	@test -f $(HEADER) || (echo "Header file $(HEADER) missing." && false)
+$(NAME): $(DEP) $(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	@$(RM) *~ \#*\# $(NAME) $(SRC:.c=.o)
+	@find . \( -name "*~" -o -name "\#*\#" \) -delete
+	@find . -name "$(NAME)" -delete
 
 oclean:
-	@$(RM) $(SRC:.c=.o)
+	@find . -name "*.o" -delete
 
-fclean: clean
+fclean: clean oclean
 
 re: fclean all
