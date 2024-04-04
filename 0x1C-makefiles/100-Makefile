@@ -1,21 +1,22 @@
-CC := gcc
+CC := gcc -Wall -Werror -Wextra -pedantic
 RM := rm -f
-CFLAGS := -Wall -Werror -Wextra -pedantic
 SRC := $(wildcard *.c)
 OBJ := $(SRC:.c=.o)
 NAME := school
+HEADER := m.h
 
 .PHONY: all clean fclean oclean re
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $^ -o $@
-
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-re: fclean all
+$(NAME): $(SRC)
+	@if [ ! -f $(HEADER) ]; then \
+		echo "Header file $(HEADER) missing, compilation aborted."; \
+		false; \
+	else \
+		$(CC) -c $^; \
+		$(CC) -o $(NAME) $(OBJ); \
+	fi
 
 clean:
 	@$(RM) *~ \#*\# $(NAME)
@@ -25,4 +26,4 @@ oclean:
 
 fclean: clean oclean
 
-.SILENT: $(NAME) $(OBJ)
+re: fclean all
