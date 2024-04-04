@@ -1,17 +1,16 @@
-# Define variables
-NAME := school
-SRC := $(wildcard *.c)
-DEP := $(wildcard *.h)
-OBJ := $(SRC:.c=.o)
 CC := gcc
 CFLAGS := -Wall -Werror -Wextra -pedantic
+NAME := school
+SRC := $(wildcard *.c)
+OBJ := $(SRC:.c=.o)
+DEP := $(wildcard *.h)
 
 .PHONY: all clean fclean oclean re
 
 all: $(NAME)
 
-$(NAME): $(DEP) $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ) $(DEP)
+	@$(CC) $(OBJ) -o $(NAME) $(CFLAGS)
 
 clean:
 	@find . \( -name "*~" -o -name "\#*\#" \) -delete
