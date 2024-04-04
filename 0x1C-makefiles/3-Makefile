@@ -4,9 +4,7 @@ NAME := school
 SRC := $(wildcard *.c)
 OBJ := $(SRC:.c=.o)
 
-all: $(NAME)
-
-$(NAME): $(OBJ)
+all: $(OBJ)
 	@$(CC) $(OBJ) -o $(NAME)
 
 %.o: %.c
